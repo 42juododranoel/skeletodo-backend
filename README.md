@@ -1,6 +1,6 @@
-![Skeletor says: “I take great pride in my work!“](https://github.com/vsevolod-skripnik/skeletodo-wiki/blob/master/memes/great-pride.jpeg?raw=True)
+![Скелетор говорит: “I take great pride in my work!“](https://github.com/vsevolod-skripnik/skeletodo-wiki/blob/master/memes/great-pride.jpeg?raw=True)
 
 
-# Skeletodo Backend
+# Бэкенд «Скелетодо»
 
-[More on wiki.](https://github.com/vsevolod-skripnik/skeletodo-wiki)
+[Подробнее на вики.](https://github.com/vsevolod-skripnik/skeletodo-wiki)
