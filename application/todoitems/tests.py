@@ -1,4 +1,5 @@
 import pytest
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from mixer.backend.django import mixer
 
@@ -30,3 +31,11 @@ def test_text_cant_be_empty(todoitem, value, message):
         todoitem.update(text=value)
 
     assert exception.value.message_dict['text'][0] == message
+
+
+def test_todoitem_has_user_foreign_key(todoitem):
+    assert isinstance(todoitem.user, User)
+
+
+def test_user_has_todoitem_set(todoitem):
+    assert todoitem in todoitem.user.todoitems.all()
