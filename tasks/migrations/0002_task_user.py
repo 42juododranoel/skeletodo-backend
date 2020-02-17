@@ -9,12 +9,12 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('todoitems', '0001_initial'),
+        ('tasks', '0001_initial'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='todoitem',
+            model_name='task',
             name='user',
             field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='User'),
             preserve_default=False,

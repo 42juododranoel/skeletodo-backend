@@ -7,13 +7,13 @@ pytestmark = [pytest.mark.django_db]
 
 
 @pytest.fixture
-def todoitem():
-    return mixer.blend('todoitems.Todoitem')
+def task():
+    return mixer.blend('tasks.Task')
 
 
-def test_text_not_longer_than_4096(todoitem):
+def test_text_not_longer_than_4096(task):
     with pytest.raises(ValidationError) as exception:
-        todoitem.update(text=('ツ' * 4097))
+        task.update(text=('ツ' * 4097))
 
     assert exception.value.message_dict['text'][0] \
         == 'Ensure this value has at most 4096 characters (it has 4097).'
@@ -26,16 +26,16 @@ def test_text_not_longer_than_4096(todoitem):
         [None, 'This field cannot be null.'],
     ]
 )
-def test_text_cant_be_empty(todoitem, value, message):
+def test_text_cant_be_empty(task, value, message):
     with pytest.raises(ValidationError) as exception:
-        todoitem.update(text=value)
+        task.update(text=value)
 
     assert exception.value.message_dict['text'][0] == message
 
 
-def test_todoitem_has_user_foreign_key(todoitem):
-    assert isinstance(todoitem.user, User)
+def test_task_has_user_foreign_key(task):
+    assert isinstance(task.user, User)
 
 
-def test_user_has_todoitem_set(todoitem):
-    assert todoitem in todoitem.user.todoitems.all()
+def test_user_has_task_set(task):
+    assert task in task.user.tasks.all()

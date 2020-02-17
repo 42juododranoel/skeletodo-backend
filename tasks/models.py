@@ -1,16 +1,17 @@
 from django.db import models
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from skeletodo.models import BaseModel
 
 
-class Todoitem(BaseModel):
+class Task(BaseModel):
     """A user's todo item."""
 
     user = models.ForeignKey(
         'auth.User',
         on_delete=models.CASCADE,
-        related_name='todoitems',
+        related_name='tasks',
         verbose_name=_('User'),
     )
 
@@ -23,3 +24,6 @@ class Todoitem(BaseModel):
     def save(self, *args, **kwargs):  # noqa: D102
         self.full_clean()
         super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('tasks:detail', args=[self.id])
