@@ -1,14 +1,8 @@
 import pytest
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from mixer.backend.django import mixer
 
 pytestmark = [pytest.mark.django_db]
-
-
-@pytest.fixture
-def task():
-    return mixer.blend('tasks.Task')
 
 
 def test_text_not_longer_than_4096(task):
