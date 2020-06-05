@@ -1,4 +1,4 @@
-django==3.0.3  # Web framework
+django==3.0.7  # Web framework
 django-allauth==0.41.0  # Boilerplate auth stuff
 django-environ==0.4.1  # Easily read .env to settings
 freezegun==0.3.7  # Freeze time in tests
